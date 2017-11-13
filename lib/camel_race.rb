@@ -52,8 +52,12 @@ module CamelRace
 
     private_class_method :new
 
-    def add_track(name, total: 0)
-      Track.create(name, total: total, top: false, parent: track)
+    def percent
+      current / total.to_f * 100
+    end
+
+    def add_track(child_name, total: 0)
+      Track.create("#{name}:#{child_name}", total: total, top: false, parent: track)
     end
 
     def tracks
