@@ -1,8 +1,10 @@
 # CamelRace
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/camel_race`. To experiment with that code, run `bin/console` for an interactive prompt.
+![4699026066_05298de607_b](https://user-images.githubusercontent.com/16633/32769890-ddaa2dde-c91d-11e7-8efe-d212f948aed2.jpg)
 
-TODO: Delete this and the text above, and describe your gem
+This gem aim to provide a simple interface track the progress of your process like background jobs, scripts, cron jobs, etc.
+
+TODO: Explain a little bit more.
 
 ## Installation
 
@@ -22,7 +24,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Examples:
+
+```ruby
+t1 = CamelRace::Track.create("foo", total: 100)
+t1.increment!
+t1.increment!(10)
+
+t1a = t1.add_track("foobar", total: 10)
+t1a.increment!
+
+t1.delete!
+
+CamelRace::Track.all
+```
+
+TODO: Proper usage documentation.
 
 ## Development
 
