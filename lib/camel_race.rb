@@ -1,4 +1,5 @@
 require "forwardable"
+require "securerandom"
 
 require "camel_race/version"
 require "camel_race/inspector"
@@ -19,9 +20,9 @@ module CamelRace
     extend Forwardable
     include Inspector
 
-    def_delegators :track, :name, :total, :current
+    def_delegators :track, :id, :name, :total, :current
 
-    inspector :name, :total, :current
+    inspector :id, :name, :total, :current
 
     class << self
       def find(name)
@@ -38,7 +39,8 @@ module CamelRace
       end
 
       def create(name, total: 0, top: true, parent: nil)
-        track = InternalTrack.create(name: name, total: total, top: top)
+        id =  SecureRandom.uuid
+        track = InternalTrack.create(id: id, name: name, total: total, top: top)
         if parent
           parent.tracks.add(track)
         end
@@ -83,8 +85,11 @@ module CamelRace
     end
 
     class InternalTrack < Ohm::Model
+
+      attribute :id
+      unique :id
       attribute :name
-      unique :name
+      index :name
 
       attribute :top
       index :top
