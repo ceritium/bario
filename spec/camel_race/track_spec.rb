@@ -140,14 +140,18 @@ RSpec.describe CamelRace::Track do
   end
 
   describe "#add_track" do
+    let!(:new_track) { track.add_track("bar") }
+
     it "add" do
-      track.add_track("bar")
       expect(track.tracks.count).to eq(1)
     end
 
     it "new track should root" do
-      new_track = track.add_track("bar")
       expect(described_class.all.map(&:id)).not_to include(new_track.id)
+    end
+
+    it "new track, total default is 100" do
+      expect(new_track.total).to eq(100)
     end
   end
 
