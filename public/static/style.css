@@ -1,0 +1,12 @@
+.tracks {
+  list-style: none;
+  padding-left: 10px;
+}
+
+.tracks .progress {
+  margin-bottom: 5px;
+}
+
+.tracks .progress-bar{
+  color: #000;
+}
