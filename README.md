@@ -4,23 +4,9 @@
 
 This gem aim to provide a simple interface track the progress of your process like background jobs, scripts, cron jobs, etc.
 
+**Work in progress**
+
 TODO: Explain a little bit more.
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'camel_race'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install camel_race
 
 ## Usage
 
