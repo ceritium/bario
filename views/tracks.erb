@@ -1,0 +1,18 @@
+<div class="tracks">
+  <% tracks.each do |track| %>
+    <div>
+      <form action="/tracks-delete/<%= track.id %>" method="post" id="delete-track-<%=track.id%>">
+        <%= "#{track.id} - #{track.name} | #{track.current} of #{track.total}" %>
+        <button type="submit" class="btn btn-danger btn-sm">X</button>
+      </form>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= track.percent %>%;" aria-valuenow="<%= track.current %>" aria-valuemin="0" aria-valuemax="<%= track.total %>">
+          <%=track.percent %>%
+        </div>
+      </div>
+      <% if track.tracks %>
+        <%= partial :tracks, locals: {tracks: track.tracks } %>
+      <% end %>
+    </div>
+  <% end %>
+</ul>
