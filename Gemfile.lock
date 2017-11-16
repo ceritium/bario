@@ -9,6 +9,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.3.0)
+    byebug (9.1.0)
     coderay (1.1.2)
     coveralls (0.8.21)
       json (>= 1.8, < 3)
@@ -63,6 +64,9 @@ GEM
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    pry-byebug (3.5.0)
+      byebug (~> 9.1)
+      pry (~> 0.10)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
@@ -127,6 +131,7 @@ DEPENDENCIES
   coveralls (~> 0.8)
   guard-rspec (~> 4.7)
   guard-rubocop (~> 1.0)
+  pry-byebug
   rake (~> 10.0)
   rspec (~> 3.0)
   rubocop (~> 0.51)
