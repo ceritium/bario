@@ -155,8 +155,16 @@ RSpec.describe CamelRace::Track do
     end
   end
 
-  it "#delete" do
-    track.delete!
-    expect(described_class.find(track.id)).to be_nil
+  describe "#delete" do
+    it "remove from db" do
+      track.delete!
+      expect(described_class.find(track.id)).to be_nil
+    end
+
+    it "remove child track" do
+      new_track = track.add_track("bar")
+      new_track.delete!
+      expect(track.tracks.count).to eq(0)
+    end
   end
 end
