@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "camel_race"
+
+threads = []
+
+3.times.each do |t1|
+  track = CamelRace::Track.create("bar #{t1}")
+  threads << Thread.new do
+    100.times do
+      track.increment!
+      sleep(1.0 / ((t1 + 1) * 2))
+    end
+    track.delete!
+  end
+
+  t1.times.each do |t2|
+    child = track.add_track(" > #{t2}")
+    threads << Thread.new do
+      100.times do
+        child.increment!
+        sleep(0.1)
+      end
+      child.delete!
+    end
+  end
+end
+
+threads.map(&:join)
