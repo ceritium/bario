@@ -29,7 +29,7 @@ module CamelRace
       def create(name, total: DEFAULT_TOTAL, root: true, parent: nil)
         track = InternalTrack.create(name: name, total: total, root: root,
                                      parent: parent)
-        parent&.children&.push(track)
+        parent.children.push(track) if parent
         new(track)
       end
 
@@ -81,7 +81,7 @@ module CamelRace
     end
 
     def delete!
-      track.parent&.children&.delete(track)
+      track.parent.children.delete(track) if track.parent
       track.delete
     end
 

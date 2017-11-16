@@ -15,6 +15,6 @@ end
 
 post "/tracks-delete/:id" do
   track = CamelRace::Track.find(params[:id])
-  track&.delete!
+  track.delete! if track
   redirect to("/")
 end
