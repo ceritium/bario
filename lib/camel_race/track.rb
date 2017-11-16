@@ -27,8 +27,9 @@ module CamelRace
       end
 
       def create(name, total: DEFAULT_TOTAL, root: true, parent: nil)
-        track = InternalTrack.create(name: name, total: total, root: root)
-        parent&.tracks&.add(track)
+        track = InternalTrack.create(name: name, total: total, root: root,
+                                     parent: parent)
+        parent.children.push(track) if parent
         new(track)
       end
 
@@ -68,7 +69,7 @@ module CamelRace
     end
 
     def tracks
-      self.class.collection(track.tracks)
+      self.class.collection(track.children)
     end
 
     def increment!(by = 1)
@@ -80,6 +81,7 @@ module CamelRace
     end
 
     def delete!
+      track.parent.children.delete(track) if track.parent
       track.delete
     end
 
@@ -99,7 +101,8 @@ module CamelRace
       attribute :current
       counter :current
 
-      set :tracks, "CamelRace::Track::InternalTrack"
+      list :children, "CamelRace::Track::InternalTrack"
+      reference :parent, "CamelRace::Track::InternalTrack"
     end
 
     private_constant :InternalTrack
