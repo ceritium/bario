@@ -1,7 +1,7 @@
 <div class="tracks">
   <% tracks.each do |track| %>
     <div>
-      <form action="/tracks-delete/<%= track.id %>" method="post" id="delete-track-<%=track.id%>">
+      <form action='<%= url_path "tracks-delete/#{track.id}" %>' method="post" id="delete-track-<%=track.id%>">
         <%= "#{track.id} - #{track.name} | #{track.current} of #{track.total}" %>
         <button type="submit" class="btn btn-danger btn-sm">X</button>
       </form>
