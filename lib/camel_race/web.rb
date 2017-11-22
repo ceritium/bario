@@ -31,7 +31,14 @@ module CamelRace
     end
 
     get "/" do
+      @tracks = CamelRace::Track.all
       erb :index
+    end
+
+    post "/tracks-delete-all" do
+      CamelRace::Track.all.each(&:delete!)
+
+      redirect to("/")
     end
 
     post "/tracks-delete/:id" do
