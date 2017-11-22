@@ -11,6 +11,16 @@
     <link href="<%=url_path 'static/style.css' %>" rel="stylesheet" type="text/css"/>
   </head>
   <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="<% url_path "/" %>">CamelRace</a>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <div class="mr-auto"></div>
+
+        <form action='<%= url_path "tracks-delete-all" %>' method="post">
+          <button type="submit" class="btn btn-danger btn-sm">Delete all</button>
+        </form>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
