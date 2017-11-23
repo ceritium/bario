@@ -2,11 +2,11 @@
 
 require "ohm"
 
-require "camel_race/version"
-require "camel_race/track"
+require "bario/version"
+require "bario/track"
 
-# Main module of CamelRace
-module CamelRace
+# Main module of Bario
+module Bario
   def self.redis
     Ohm.redis
   end

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "sinatra"
-require "camel_race"
+require "bario"
 
-module CamelRace
+module Bario
   # Sinatra app to provide a simple dashboard
   class Web < Sinatra::Base
     set :public_folder, File.dirname(__FILE__) + "/web/public"
@@ -31,18 +31,18 @@ module CamelRace
     end
 
     get "/" do
-      @tracks = CamelRace::Track.all
+      @tracks = Bario::Track.all
       erb :index
     end
 
     post "/tracks-delete-all" do
-      CamelRace::Track.all.each(&:delete!)
+      Bario::Track.all.each(&:delete!)
 
       redirect to("/")
     end
 
     post "/tracks-delete/:id" do
-      track = CamelRace::Track.find(params[:id])
+      track = Bario::Track.find(params[:id])
       track.delete! if track
       redirect to("/")
     end

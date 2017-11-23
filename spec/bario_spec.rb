@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe CamelRace do
+RSpec.describe Bario do
   it "has a version number" do
-    expect(CamelRace::VERSION).not_to be nil
+    expect(Bario::VERSION).not_to be nil
   end
 
   describe "#redis" do

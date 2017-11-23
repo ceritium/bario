@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "forwardable"
-require "camel_race/inspector"
+require "bario/inspector"
 
-module CamelRace
+module Bario
   # Track encapsulate all the logic to create, list, find, delete and update
   # the progress bars
   class Track
@@ -101,8 +101,8 @@ module CamelRace
       attribute :current
       counter :current
 
-      list :children, "CamelRace::Track::InternalTrack"
-      reference :parent, "CamelRace::Track::InternalTrack"
+      list :children, "Bario::Track::InternalTrack"
+      reference :parent, "Bario::Track::InternalTrack"
     end
 
     private_constant :InternalTrack
