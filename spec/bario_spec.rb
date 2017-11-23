@@ -5,16 +5,22 @@ RSpec.describe Bario do
     expect(Bario::VERSION).not_to be nil
   end
 
-  describe "#redis" do
-    it "default redis" do
-      expect(described_class.redis).not_to be nil
+  it "#redis_uri=" do
+    uri = "redis://foo:43/bar"
+    described_class.redis_uri = uri
+    expect(described_class.redic.url).to eq(uri)
+  end
+
+  describe "#redic" do
+    it "default redic" do
+      expect(described_class.redic).not_to be nil
     end
 
-    it "assign redis" do
-      redis = Redic.new
-      described_class.redis = redis
+    it "assign redic" do
+      redic = Redic.new
+      described_class.redic = redic
 
-      expect(described_class.redis).to be(redis)
+      expect(described_class.redic).to be(redic)
     end
   end
 end

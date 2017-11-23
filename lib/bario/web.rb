@@ -11,7 +11,8 @@ module Bario
 
     helpers do
       def partial(page, options = {})
-        erb page, options.merge!(layout: false)
+        options[:layout] = false
+        erb page, options
       end
 
       def url_path(*path_parts)

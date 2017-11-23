@@ -3,9 +3,18 @@
 
 require "bundler/setup"
 require "bario"
+require "bario/cli"
+
+require "optparse"
+
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: bario-demo [options]"
+  Bario::CLI.common(opts)
+end
+
+parser.parse!
 
 threads = []
-
 3.times.each do |t1|
   track = Bario::Track.create("bar #{t1}")
   threads << Thread.new do
