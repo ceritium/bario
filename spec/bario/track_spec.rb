@@ -59,13 +59,13 @@ RSpec.describe Bario::Track do
 
   describe "#current" do
     it "with negative internal value" do
-      track.decrement!
+      track.decrement
       expect(track.current).to eq(0)
     end
 
     it "with internal value bigger than total" do
       track.total = 10
-      track.increment!(100)
+      track.increment(100)
       expect(track.current).to eq(10)
     end
   end
@@ -82,36 +82,36 @@ RSpec.describe Bario::Track do
     expect(track.total).to eq(10)
   end
 
-  describe "#increment!" do
+  describe "#increment" do
     it "without params" do
-      track.increment!
+      track.increment
       expect(track.current).to eq(1)
     end
 
     it "with positive value" do
-      track.increment!(10)
+      track.increment(10)
       expect(track.current).to eq(10)
     end
 
     it "with negative value" do
-      track.increment!(10)
-      track.increment!(-1)
+      track.increment(10)
+      track.increment(-1)
       expect(track.current).to eq(9)
     end
   end
 
-  describe "#decrement!" do
+  describe "#decrement" do
     before do
-      track.increment!(50)
+      track.increment(50)
     end
 
     it "with positive value" do
-      track.decrement!(10)
+      track.decrement(10)
       expect(track.current).to eq(40)
     end
 
     it "with negative value" do
-      track.decrement!(-10)
+      track.decrement(-10)
       expect(track.current).to eq(60)
     end
   end
@@ -129,7 +129,7 @@ RSpec.describe Bario::Track do
 
     it "with total non 0, current non 0" do
       track.total = 10
-      track.increment!
+      track.increment
 
       expect(track.percent).to eq(10.0)
     end
@@ -157,13 +157,13 @@ RSpec.describe Bario::Track do
 
   describe "#delete" do
     it "remove from db" do
-      track.delete!
+      track.delete
       expect(described_class.find(track.id)).to be_nil
     end
 
     it "remove child track" do
       new_track = track.add_track("bar")
-      new_track.delete!
+      new_track.delete
       expect(track.tracks.count).to eq(0)
     end
   end
