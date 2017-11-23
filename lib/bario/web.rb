@@ -37,14 +37,14 @@ module Bario
     end
 
     post "/tracks-delete-all" do
-      Bario::Track.all.each(&:delete!)
+      Bario::Track.all.each(&:delete)
 
       redirect to("/")
     end
 
     post "/tracks-delete/:id" do
       track = Bario::Track.find(params[:id])
-      track.delete! if track
+      track.delete if track
       redirect to("/")
     end
   end
