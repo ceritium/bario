@@ -34,7 +34,7 @@ module Bario
       end
 
       def collection(tracks)
-        tracks.map { |x| new(x) }
+        tracks.map { |item| new(item) }
       end
     end
 
@@ -72,16 +72,17 @@ module Bario
       self.class.collection(track.children)
     end
 
-    def increment!(by = 1)
+    def increment(by = 1)
       track.increment(:current, by)
     end
 
-    def decrement!(by = 1)
+    def decrement(by = 1)
       track.decrement(:current, by)
     end
 
-    def delete!
-      track.parent.children.delete(track) if track.parent
+    def delete
+      parent = track.parent
+      parent.children.delete(track) if parent
       track.delete
     end
 
