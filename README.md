@@ -2,9 +2,11 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/ceritium/bario/badge.svg?branch=master)](https://coveralls.io/github/ceritium/bario?branch=master)
 
-![4699026066_05298de607_b](https://user-images.githubusercontent.com/16633/32769890-ddaa2dde-c91d-11e7-8efe-d212f948aed2.jpg)
+Bario means [Barium](https://en.wikipedia.org/wiki/Barium) in spanish.
 
-This gem aim to provide a simple interface track the progress of your process like background jobs, scripts, cron jobs, etc.
+![Barium](https://upload.wikimedia.org/wikipedia/commons/1/16/Barium_unter_Argon_Schutzgas_Atmosph%C3%A4re.jpg)
+
+This gem aim to provide a simple interface to track the progress of your process like background jobs, scripts, cron jobs... with a kind progress bars backed by redis.
 
 **Work in progress**
 
