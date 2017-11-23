@@ -19,20 +19,20 @@ threads = []
   track = Bario::Track.create("bar #{t1}")
   threads << Thread.new do
     100.times do
-      track.increment!
+      track.increment
       sleep(1.0 / ((t1 + 1) * 2))
     end
-    track.delete!
+    track.delete
   end
 
   t1.times.each do |t2|
     child = track.add_track(" > #{t2}")
     threads << Thread.new do
       100.times do
-        child.increment!
+        child.increment
         sleep(0.1)
       end
-      child.delete!
+      child.delete
     end
   end
 end
