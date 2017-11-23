@@ -2,16 +2,16 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "camel_race/version"
+require "bario/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "camel_race"
-  spec.version       = CamelRace::VERSION
+  spec.name          = "bario"
+  spec.version       = Bario::VERSION
   spec.authors       = ["Jose Galisteo"]
   spec.email         = ["ceritium@gmail.com"]
 
   spec.summary       = "Nested progress bars backed by redis"
-  spec.homepage      = "https://github.com/ceritium/camel_race"
+  spec.homepage      = "https://github.com/ceritium/bario"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the
@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
     f.match(%r{^(test|spec|features)/})
   end
   spec.bindir        = "bin"
-  spec.executables   = ["camelrace-demo", "camelrace-web"]
+  spec.executables   = ["bario-demo", "bario-web"]
   spec.require_paths = ["lib"]
 
   spec.add_dependency "ohm", "~> 3.0"

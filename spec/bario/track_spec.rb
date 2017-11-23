@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe CamelRace::Track do
+RSpec.describe Bario::Track do
   subject(:track) { described_class.create("foo") }
 
   before do
@@ -136,7 +136,7 @@ RSpec.describe CamelRace::Track do
   end
 
   it "#inspect" do
-    expect(track.inspect).to match(/CamelRace::Track:/)
+    expect(track.inspect).to match(/Bario::Track:/)
   end
 
   describe "#add_track" do

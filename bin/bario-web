@@ -2,6 +2,6 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
-require "camel_race/web"
+require "bario/web"
 
-CamelRace::Web.run!
+Bario::Web.run!

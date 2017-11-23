@@ -1,6 +1,6 @@
-# CamelRace
+# Bario
 
-[![Coverage Status](https://coveralls.io/repos/github/ceritium/camel_race/badge.svg?branch=master)](https://coveralls.io/github/ceritium/camel_race?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/ceritium/bario/badge.svg?branch=master)](https://coveralls.io/github/ceritium/bario?branch=master)
 
 ![4699026066_05298de607_b](https://user-images.githubusercontent.com/16633/32769890-ddaa2dde-c91d-11e7-8efe-d212f948aed2.jpg)
 
@@ -15,7 +15,7 @@ TODO: Explain a little bit more.
 Examples:
 
 ```ruby
-t1 = CamelRace::Track.create("foo", total: 100)
+t1 = Bario::Track.create("foo", total: 100)
 t1.increment!
 t1.increment!(10)
 
@@ -24,7 +24,7 @@ t1a.increment!
 
 t1.delete!
 
-CamelRace::Track.all
+Bario::Track.all
 ```
 
 TODO: Proper usage documentation.
@@ -37,7 +37,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ceritium/camel_race. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ceritium/bario. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -45,4 +45,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the CamelRace project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/ceritium/camel_race/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Bario project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/ceritium/bario/blob/master/CODE_OF_CONDUCT.md).

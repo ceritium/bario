@@ -10,7 +10,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 ]
 SimpleCov.start
 
-require "camel_race"
+require "bario"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
