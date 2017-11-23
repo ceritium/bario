@@ -18,18 +18,46 @@ Examples:
 
 ```ruby
 t1 = Bario::Track.create("foo", total: 100)
-t1.increment!
-t1.increment!(10)
+t1.increment
+t1.increment(10)
 
 t1a = t1.add_track("foobar", total: 10)
-t1a.increment!
+t1a.increment
 
-t1.delete!
+t1.delete
 
 Bario::Track.all
 ```
-
 TODO: Proper usage documentation.
+
+## The frontend
+
+![screen shot 2017-11-23 at 23 45 39](https://user-images.githubusercontent.com/16633/33189997-8c95d226-d0a8-11e7-8a62-288e50e73ae8.png)
+
+### Standalone
+
+If you've installed Bario as a gem running the front end standalone is easy:
+
+```bash
+$ bario-web start
+```
+
+```bash
+$ bario-web --redis redis://localhost:6379/0 start
+```
+
+For more options check the help:
+```bash
+$ bario-web --help
+```
+
+### Rails 3, 4, 5
+
+You can also mount Bario on a subpath in your existing Rails app by adding `require 'bario/web'` to the top of your routes file or in an initializer then adding this to routes.rb:
+
+```ruby
+mount Bario::Web => "/bario"
+```
 
 ## Development
 
