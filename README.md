@@ -53,7 +53,7 @@ $ bario-web --help
 
 ### Rails 3, 4, 5
 
-You can also mount Bario on a subpath in your existing Rails app by adding `require 'bario/web'` to the top of your routes file or in an initializer then adding this to routes.rb:
+You can also mount Bario on a subpath in your existing Rails app by adding `require "bario/web"` to the top of your routes file or in an initializer then adding this to routes.rb:
 
 ```ruby
 mount Bario::Web => "/bario"
