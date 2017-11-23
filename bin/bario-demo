@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
-require "camel_race"
+require "bario"
 
 threads = []
 
 3.times.each do |t1|
-  track = CamelRace::Track.create("bar #{t1}")
+  track = Bario::Track.create("bar #{t1}")
   threads << Thread.new do
     100.times do
       track.increment!

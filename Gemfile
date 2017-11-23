@@ -4,5 +4,5 @@ source "https://rubygems.org"
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-# Specify your gem's dependencies in camel_race.gemspec
+# Specify your gem's dependencies in bario.gemspec
 gemspec
