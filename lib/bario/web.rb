@@ -32,19 +32,19 @@ module Bario
     end
 
     get "/" do
-      @tracks = Bario::Track.all
+      @bars = Bario::Bar.all
       erb :index
     end
 
-    post "/tracks-delete-all" do
-      Bario::Track.all.each(&:delete)
+    post "/bars-delete-all" do
+      Bario::Bar.all.each(&:delete)
 
       redirect to("/")
     end
 
-    post "/tracks-delete/:id" do
-      track = Bario::Track.find(params[:id])
-      track.delete if track
+    post "/bars-delete/:id" do
+      bar = Bario::Bar.find(params[:id])
+      bar.delete if bar
       redirect to("/")
     end
   end

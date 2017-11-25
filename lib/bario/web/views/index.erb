@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row mt-3">
     <div class="col">
-      <% if @tracks.size.nonzero? %>
-          <%= partial :tracks, locals: {tracks: @tracks } %>
+      <% if @bars.size.nonzero? %>
+          <%= partial :bars, locals: {bars: @bars } %>
       <% else %>
         <p class="lead">
           There is nothing in progress
