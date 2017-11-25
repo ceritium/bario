@@ -3,7 +3,7 @@
 require "ohm"
 
 require "bario/version"
-require "bario/track"
+require "bario/bar"
 
 # Main module of Bario
 module Bario

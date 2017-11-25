@@ -12,30 +12,30 @@ RSpec.describe Bario::Web do
     described_class
   end
 
-  let(:track) do
-    track = Bario::Track.create
-    track.add_track
-    track
+  let(:bar) do
+    bar = Bario::Bar.create
+    bar.add_bar
+    bar
   end
 
   describe "GET /" do
     it "success response" do
-      track1 = Bario::Track.create
-      track1.add_track
+      bar1 = Bario::Bar.create
+      bar1.add_bar
 
       get "/"
       expect(last_response).to be_ok
     end
   end
 
-  describe "POST /tracks-delete-all" do
+  describe "POST /bars-delete-all" do
     before do
-      track
-      post "/tracks-delete-all"
+      bar
+      post "/bars-delete-all"
     end
 
-    it "delete all tracks" do
-      expect(Bario::Track.all.count).to eq(0)
+    it "delete all bars" do
+      expect(Bario::Bar.all.count).to eq(0)
     end
 
     it "redirect to /" do
@@ -43,14 +43,14 @@ RSpec.describe Bario::Web do
     end
   end
 
-  describe "POST /tracks-delete/:id" do
+  describe "POST /bars-delete/:id" do
     before do
-      track
-      post "/tracks-delete/#{track.id}"
+      bar
+      post "/bars-delete/#{bar.id}"
     end
 
-    it "delete track" do
-      expect(Bario::Track.find(track.id)).to be_nil
+    it "delete bar" do
+      expect(Bario::Bar.find(bar.id)).to be_nil
     end
 
     it "redirect to /" do
