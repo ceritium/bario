@@ -26,9 +26,13 @@ module Bario
         collection(InternalTrack.find(root: true))
       end
 
-      def create(name, total: DEFAULT_TOTAL, root: true, parent: nil)
-        track = InternalTrack.create(name: name, total: total, root: root,
-                                     parent: parent)
+      def create(opts = {})
+        opts[:total] ||= DEFAULT_TOTAL
+        opts[:root] = true unless opts.key?(:root)
+
+        track = InternalTrack.create(opts)
+
+        parent = opts[:parent]
         parent.children.push(track) if parent
         new(track)
       end
@@ -63,9 +67,11 @@ module Bario
       track.total = val
     end
 
-    def add_track(child_name, total: DEFAULT_TOTAL)
-      new_name = "#{name}:#{child_name}"
-      Track.create(new_name, total: total, root: false, parent: track)
+    def add_track(opts = {})
+      opts[:total] ||= DEFAULT_TOTAL
+      opts[:parent] = track
+      opts[:root] = false
+      Track.create(opts)
     end
 
     def tracks

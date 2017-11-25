@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Bario::Track do
-  subject(:track) { described_class.create("foo") }
+  subject(:track) { described_class.create(name: "foo") }
 
   before do
     Ohm.flush
@@ -21,8 +21,8 @@ RSpec.describe Bario::Track do
     end
 
     it "returns an array with the tracks" do
-      track1 = described_class.create("foo")
-      track2 = described_class.create("bar")
+      track1 = described_class.create
+      track2 = described_class.create
 
       expect(described_class.all.map(&:id)).to eql([track1, track2].map(&:id))
     end
@@ -38,7 +38,7 @@ RSpec.describe Bario::Track do
     end
 
     describe "with custom values" do
-      subject(:track) { described_class.create("foo", total: 42, root: false) }
+      subject(:track) { described_class.create(total: 42, root: false) }
 
       it { expect(track.total).to eq(42) }
       it { expect(track.root).to be false }
@@ -51,7 +51,7 @@ RSpec.describe Bario::Track do
     end
 
     it "return the track" do
-      track_id = described_class.create("foo").id
+      track_id = described_class.create.id
       track = described_class.find(track_id)
       expect(track.id).to eq(track_id)
     end
@@ -140,13 +140,13 @@ RSpec.describe Bario::Track do
   end
 
   describe "#add_track" do
-    let!(:new_track) { track.add_track("bar") }
+    let!(:new_track) { track.add_track }
 
     it "add" do
       expect(track.tracks.count).to eq(1)
     end
 
-    it "new track should root" do
+    it "new track should not be root" do
       expect(described_class.all.map(&:id)).not_to include(new_track.id)
     end
 
@@ -162,7 +162,7 @@ RSpec.describe Bario::Track do
     end
 
     it "remove child track" do
-      new_track = track.add_track("bar")
+      new_track = track.add_track
       new_track.delete
       expect(track.tracks.count).to eq(0)
     end
