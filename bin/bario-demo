@@ -16,17 +16,17 @@ parser.parse!
 
 threads = []
 3.times.each do |t1|
-  track = Bario::Track.create(name: "bar #{t1}")
+  bar = Bario::Bar.create(name: "bar #{t1}")
   threads << Thread.new do
     100.times do
-      track.increment
+      bar.increment
       sleep(1.0 / ((t1 + 1) * 2))
     end
-    track.delete
+    bar.delete
   end
 
   t1.times.each do |t2|
-    child = track.add_track(name: "bar > #{t2}")
+    child = bar.add_bar(name: "bar > #{t2}")
     threads << Thread.new do
       100.times do
         child.increment

@@ -17,16 +17,16 @@ TODO: Explain a little bit more.
 Examples:
 
 ```ruby
-t1 = Bario::Track.create(total: 100)
-t1.increment
-t1.increment(10)
+b1 = Bario::Bar.create(total: 100)
+b1.increment
+b1.increment(10)
 
-t1a = t1.add_track(total: 10)
-t1a.increment
+b1a = t1.add_bar(total: 10)
+b1a.increment
 
-t1.delete
+b1.delete
 
-Bario::Track.all
+Bario::Bar.all
 ```
 TODO: Proper usage documentation.
 
