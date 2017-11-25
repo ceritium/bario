@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "timecop"
+
 RSpec.describe Bario::Bar do
   subject(:bar) { described_class.create(name: "foo") }
 
@@ -35,6 +37,9 @@ RSpec.describe Bario::Bar do
       it { expect(bar.total).to eq(100) }
       it { expect(bar.current).to eq(0) }
       it { expect(bar.root).to be true }
+      it { expect(bar.created_at).to be_a Time }
+      it { expect(bar.updated_at).to be_a Time }
+      it { expect(bar.updated_at).to eq(bar.created_at) }
     end
 
     describe "with custom values" do
@@ -83,6 +88,14 @@ RSpec.describe Bario::Bar do
   end
 
   describe "#increment" do
+    it "change updated_at" do
+      new_time = Time.now.utc.round + 60
+      Timecop.freeze(new_time) do
+        bar.increment
+        expect(bar.updated_at).to eq(new_time)
+      end
+    end
+
     it "without params" do
       bar.increment
       expect(bar.current).to eq(1)
@@ -103,6 +116,14 @@ RSpec.describe Bario::Bar do
   describe "#decrement" do
     before do
       bar.increment(50)
+    end
+
+    it "change updated_at" do
+      new_time = Time.now.utc.round + 60
+      Timecop.freeze(new_time) do
+        bar.decrement
+        expect(bar.updated_at).to eq(new_time)
+      end
     end
 
     it "with positive value" do
