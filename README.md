@@ -17,11 +17,11 @@ TODO: Explain a little bit more.
 Examples:
 
 ```ruby
-t1 = Bario::Track.create("foo", total: 100)
+t1 = Bario::Track.create(total: 100)
 t1.increment
 t1.increment(10)
 
-t1a = t1.add_track("foobar", total: 10)
+t1a = t1.add_track(total: 10)
 t1a.increment
 
 t1.delete
