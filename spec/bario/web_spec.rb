@@ -13,15 +13,15 @@ RSpec.describe Bario::Web do
   end
 
   let(:track) do
-    track = Bario::Track.create("foo")
-    track.add_track("bar")
+    track = Bario::Track.create
+    track.add_track
     track
   end
 
   describe "GET /" do
     it "success response" do
-      track1 = Bario::Track.create("foo")
-      track1.add_track("bar")
+      track1 = Bario::Track.create
+      track1.add_track
 
       get "/"
       expect(last_response).to be_ok
