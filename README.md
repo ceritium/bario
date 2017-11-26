@@ -8,27 +8,44 @@ Bario means [Barium](https://en.wikipedia.org/wiki/Barium) in spanish.
 
 This gem aim to provide a simple interface to track the progress of your process like background jobs, scripts, cron jobs... with a kind progress bars backed by redis.
 
-**Work in progress**
-
-TODO: Explain a little bit more.
 
 ## Usage
 
 Examples:
 
 ```ruby
+# Create a bar with 100 as total
 b1 = Bario::Bar.create(total: 100)
+
+# Increment a unit
 b1.increment
+
+# Increment 10 units
 b1.increment(10)
 
-b1a = t1.add_bar(total: 10)
-b1a.increment
+# Decrement 
+b1.decrement
 
-b1.delete
+# Create a nested bar
+b2 = b1.add_bar(total: 10)
+b2.increment
 
+# Find a bar
+b3 = Bario::Bar.find(b1.id)
+
+# List all bars
 Bario::Bar.all
+
+# Delete a bar (and nested bars)
+b3.delete
+
+# You can also name a bar, usefull to identify it in the web panel.
+foo = Bario::Bar.create(name: "foo")
+
+# Attributes of a bar
+foo.inspect #=> 
+#<Bario::Bar:70234519614100 id: 12, name: foo, total: 100, current: 0, root: true, created_at: 2017-11-26 21:29:30 UTC, updated_at: 2017-11-26 21:29:30 UTC>
 ```
-TODO: Proper usage documentation.
 
 ## The frontend
 
