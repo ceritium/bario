@@ -29,6 +29,14 @@ module Bario
       def url_prefix
         nil
       end
+
+      def delete_all_path
+        url_path "/bars-delete-all"
+      end
+
+      def delete_bar_path(id)
+        url_path "/bars-delete/#{id}"
+      end
     end
 
     get "/" do
