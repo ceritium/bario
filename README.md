@@ -1,12 +1,28 @@
 # Bario
 
 [![codecov](https://codecov.io/gh/ceritium/bario/branch/master/graph/badge.svg)](https://codecov.io/gh/ceritium/bario)
+[![Gem Version](https://badge.fury.io/rb/bario.svg)](https://badge.fury.io/rb/bario)
 
 Bario means [Barium](https://en.wikipedia.org/wiki/Barium) in spanish.
 
 ![Barium](https://upload.wikimedia.org/wikipedia/commons/1/16/Barium_unter_Argon_Schutzgas_Atmosph%C3%A4re.jpg)
 
 This gem aim to provide a simple interface to track the progress of your process like background jobs, scripts, cron jobs... with a kind progress bars backed by redis.
+
+
+This gem still in very early state of development. Some behaviour could change in the future. 
+Ideas, pull requests and any kind of feedback are welcome.
+
+## Install
+
+```bash
+$ gem install bario
+```
+
+or add it to the Gemfile
+```ruby
+gem "bario"
+```
 
 
 ## Usage
