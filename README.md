@@ -3,6 +3,7 @@
 [![codecov](https://codecov.io/gh/ceritium/bario/branch/master/graph/badge.svg)](https://codecov.io/gh/ceritium/bario)
 [![Gem Version](https://badge.fury.io/rb/bario.svg)](https://badge.fury.io/rb/bario)
 [![Dependency Status](https://gemnasium.com/badges/github.com/ceritium/bario.svg)](https://gemnasium.com/github.com/ceritium/bario)
+[![Maintainability](https://api.codeclimate.com/v1/badges/37f2092deca467854301/maintainability)](https://codeclimate.com/github/ceritium/bario/maintainability)
 
 
 Bario means [Barium](https://en.wikipedia.org/wiki/Barium) in spanish.
