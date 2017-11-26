@@ -1,6 +1,6 @@
 # Bario
 
-[![Coverage Status](https://coveralls.io/repos/github/ceritium/bario/badge.svg?branch=master)](https://coveralls.io/github/ceritium/bario?branch=master)
+[![codecov](https://codecov.io/gh/ceritium/bario/branch/master/graph/badge.svg)](https://codecov.io/gh/ceritium/bario)
 
 Bario means [Barium](https://en.wikipedia.org/wiki/Barium) in spanish.
 
