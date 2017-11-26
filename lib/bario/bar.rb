@@ -12,7 +12,7 @@ module Bario
 
     def_delegators :bar, :id, :name, :root
 
-    inspector :id, :name, :total, :current, :root
+    inspector :id, :name, :total, :current, :root, :created_at, :updated_at
 
     DEFAULT_TOTAL = 100
 
@@ -47,6 +47,14 @@ module Bario
     end
 
     private_class_method :new
+
+    def created_at
+      Time.at(bar.created_at.to_i).utc
+    end
+
+    def updated_at
+      Time.at(bar.updated_at.to_i).utc
+    end
 
     def percent
       current / total.to_f * 100
@@ -110,6 +118,37 @@ module Bario
 
       list :children, "Bario::Bar::InternalBar"
       reference :parent, "Bario::Bar::InternalBar"
+
+      # Extracted from ohm-contrib
+      Timestamp = ->(time) { time && time.to_i.to_s }
+      attribute :created_at, Timestamp
+      attribute :updated_at, Timestamp
+
+      class << self
+        def time_now
+          Time.now.utc.to_i
+        end
+      end
+
+      def save
+        time_now = self.class.time_now
+
+        self.created_at = time_now if new?
+        self.updated_at = time_now
+        super
+      end
+
+      # Override increment update `updated_at` attribute
+      # `decrement` call to `increment`.
+      def increment(att, count = 1)
+        time_now = self.class.time_now
+
+        redis.queue("HINCRBY", key[:counters], att, count)
+        redis.queue("HSET", key, "updated_at", time_now)
+
+        self.updated_at = time_now
+        redis.commit
+      end
     end
 
     private_constant :InternalBar
