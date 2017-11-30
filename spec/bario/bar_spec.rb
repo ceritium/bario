@@ -50,6 +50,18 @@ RSpec.describe Bario::Bar do
     end
   end
 
+  describe "#get" do
+    it "return a nullbar if not found" do
+      expect(described_class.get(42)).to be_a(Bario::NullBar)
+    end
+
+    it "return the bar" do
+      bar_id = described_class.create.id
+      bar = described_class.find(bar_id)
+      expect(bar.id).to eq(bar_id)
+    end
+  end
+
   describe "#find" do
     it "return nil if not found" do
       expect(described_class.find(42)).to be_nil
