@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "bario/version"
 
@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "codecov", "~> 0.1"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   spec.add_development_dependency "guard-rubocop", "~> 1.0"
-  spec.add_development_dependency "rack-test", "~> 0.8"
+  spec.add_development_dependency "rack-test", "~> 1.1"
   spec.add_development_dependency "rake", "~> 12.3"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rubocop", "~> 0.51"
