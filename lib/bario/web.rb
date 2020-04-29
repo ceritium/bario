@@ -52,7 +52,7 @@ module Bario
 
     post "/bars-delete/:id" do
       bar = Bario::Bar.find(params[:id])
-      bar.delete if bar
+      bar&.delete
       redirect to("/")
     end
   end

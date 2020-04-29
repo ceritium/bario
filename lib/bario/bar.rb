@@ -40,7 +40,7 @@ module Bario
         bar = Storage.create(opts)
 
         parent = opts[:parent]
-        parent.children.push(bar) if parent
+        parent&.children&.push(bar)
         new(bar)
       end
 
@@ -103,7 +103,7 @@ module Bario
 
     def delete
       parent = bar.parent
-      parent.children.delete(bar) if parent
+      parent&.children&.delete(bar)
       bar.delete
     end
 
