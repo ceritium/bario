@@ -7,6 +7,9 @@
     <meta name="author" content="Jose Galisteo">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <script src="<%=url_path 'static/jquery-3.4.1.slim.min.js'%>"></script>
+    <script src="<%=url_path 'static/bootstrap.bundle.min.js'%>"></script>
     <link href="<%=url_path 'static/bootstrap.min.css'%>" rel="stylesheet" type="text/css"/>
     <link href="<%=url_path 'static/style.css' %>" rel="stylesheet" type="text/css"/>
   </head>
@@ -16,11 +19,43 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <div class="mr-auto"></div>
 
-        <form action='<%= delete_all_path %>' method="post">
+        <div class="btn-group mr-4">
+          <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Auto reload
+            <% if params[:reload].to_i > 0 %>
+              <%= params[:reload] %> s
+            <% else %>
+                disabled
+            <% end %>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="?reload=5">5 s</a>
+            <a class="dropdown-item" href="?reload=10">10 s</a>
+            <a class="dropdown-item" href="?reload=20">20 s</a>
+            <a class="dropdown-item" href="?">Disable</a>
+          </div>
+        </div>
+        <form action='<%= delete_all_path %>' onSubmit="if(!confirm('Are you sure?')){return false;}" method="post">
           <button type="submit" class="btn btn-danger btn-sm">Delete all</button>
         </form>
       </div>
     </nav>
+    <script type="text/javascript">
+      function getUrlVars() {
+          var vars = {};
+          var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+              vars[key] = value;
+          });
+          return vars;
+      }
+
+      var reload = parseInt(getUrlVars().reload);
+      if(reload) {
+        setInterval(function(){
+          location.reload()
+        }, reload * 1000);
+      }
+    </script>
     <%= yield %>
   </body>
 </html>
