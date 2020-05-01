@@ -67,7 +67,7 @@ foo.inspect #=>
 
 ## The frontend
 
-![screen shot 2017-11-23 at 23 45 39](https://user-images.githubusercontent.com/16633/33189997-8c95d226-d0a8-11e7-8a62-288e50e73ae8.png)
+![screencapture](https://raw.githubusercontent.com/ceritium/bario/master/docs/screencapture.png)
 
 ### Standalone
 
