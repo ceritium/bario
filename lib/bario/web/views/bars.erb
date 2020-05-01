@@ -1,17 +1,32 @@
 <div class="bars">
   <% bars.each do |bar| %>
-    <div>
-      <form action='<%= delete_bar_path(bar.id) %>' method="post" id="delete-bar-<%=bar.id%>">
-        <%= "#{bar.id} - #{bar.name} | #{bar.current} of #{bar.total}" %>
-        <button type="submit" class="btn btn-danger btn-sm">X</button>
-      </form>
+    <div class='mb-3'>
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <%= "#{bar.id}" %>
+          <% if bar.name %>
+            <%= "- #{bar.name}" %>
+          <% end %>
+        </div>
+        <div class="col-auto ">
+          <%= "#{bar.current} of #{bar.total}" %>
+        </div>
+
+        <div class="col-auto">
+          <form action='<%= delete_bar_path(bar.id) %>' onSubmit="if(!confirm('Are you sure?')){return false;}" method="post" id="delete-bar-<%=bar.id%>">
+            <button type="submit" class="btn btn-danger btn-sm">X</button>
+          </form>
+        </div>
+      </div>
       <div class="progress">
        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= bar.percent %>%;" aria-valuenow="<%= bar.current %>" aria-valuemin="0" aria-valuemax="<%= bar.total %>">
           <%= bar.percent %>%
         </div>
       </div>
       <% if bar.bars %>
-        <%= partial :bars, locals: { bars: bar.bars } %>
+        <div class="ml-4 mt-3">
+          <%= partial :bars, locals: { bars: bar.bars } %>
+        </div>
       <% end %>
     </div>
   <% end %>
