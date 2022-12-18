@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "ohm", "~> 3.0"
-  spec.add_dependency "sinatra", "2.0.8.1"
+  spec.add_dependency "sinatra", "3.0.5"
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "codecov", "~> 0.1"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
